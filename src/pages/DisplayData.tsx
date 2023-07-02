@@ -3,6 +3,8 @@ import { iData } from '../utils/interfaces'
 import { readTask } from '../utils/APIs'
 import { styled } from 'styled-components'
 import moment from "moment"
+//npx json-server -w src/data/database.json -p 2009
+import {BsChevronDoubleDown, BsChevronDown} from 'react-icons/bs'
 
 const DisplayData = () => {
     const [state, setState] = useState<iData[]>([])
@@ -35,7 +37,12 @@ const DisplayData = () => {
                                         </BB>
                                         <TT>
                                             <Reaction>3</Reaction>
-                                            <Straid>l</Straid>
+                                            <Straid>
+                                            {props.priority == 'Urgent' ? <BsChevronDoubleDown style={{color: 'red'}}/> : 
+                                                props.priority == 'High' ? <BsChevronDown style={{color: 'green'}}/> : 'II'
+                                                }
+
+                                            </Straid>
                                             <Avatar src={props.avatar} />
                                         </TT>
                                     </Bottom>
@@ -109,7 +116,9 @@ margin-right: 5px;
 border-radius:2px;
 `
 
-const Straid = styled.div``
+const Straid = styled.div`
+
+`
 
 const TT = styled.div`
 display:flex;
